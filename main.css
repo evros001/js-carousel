@@ -1,0 +1,25 @@
+#container {
+  width: 100%
+}
+#slideshow-container {
+  margin: 20px;
+}
+
+img, #container {
+  height: 400px;
+  width: 600px;
+}
+
+.hidden {
+  display: none;
+}
+
+#left {
+  float: left;
+  cursor:pointer;
+}
+
+#right {
+  float: right;
+  cursor: pointer;
+}
