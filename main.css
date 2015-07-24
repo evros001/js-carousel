@@ -1,8 +1,6 @@
 #container {
-  width: 100%
-}
-#slideshow-container {
-  margin: 20px;
+  width: 100%;
+  margin: 20px auto;
 }
 
 img, #container {

@@ -23,28 +23,16 @@ var getImageElementByNumber = function(num){
 
 var nextImage = function(num, direction){
 	var current_img = showingImageElement();
+	var next; 
 	current_img.className = "hidden slideshow-image";
 
 	if(direction === "right"){
-		if (num != num_of_img){
-			var next = getImageElementByNumber(num+1);
-			next.className = "showing slideshow-image";
-		}
-		else {
-			var next = getImageElementByNumber(1);
-			next.className = "showing slideshow-image";
-		}
+		(num != num_of_img) ? next = getImageElementByNumber(num+1) : next = getImageElementByNumber(1);
 	}
 	else {
-		if (num != 1){
-			var next = getImageElementByNumber(num-1);
-			next.className = "showing slideshow-image";
-		}
-		else {
-			var next = getImageElementByNumber(num_of_img);
-			next.className = "showing slideshow-image";
-		}
+		(num != 1) ? next = getImageElementByNumber(num-1) : next = getImageElementByNumber(num_of_img);
 	}
+	next.className = "showing slideshow-image";
 }
 
 // working carousel
