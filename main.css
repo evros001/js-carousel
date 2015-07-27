@@ -1,6 +1,7 @@
 #container {
   width: 100%;
   margin: 20px auto;
+  display: inline;
 }
 
 img, #container {
@@ -8,16 +9,44 @@ img, #container {
   width: 600px;
 }
 
+#carousel-container {
+	width: 3000px;
+	height: 400px;
+  transition: all .5s ease-in-out;
+}
+
+#img-window {
+  width: 600px;
+  height: 400px;
+  overflow: visible;
+}
+
 .hidden {
   display: none;
 }
 
-#left {
+#left-btn {
   float: left;
   cursor:pointer;
+  height: 20px;
+  width: 20px;
 }
 
-#right {
+#right-btn {
   float: right;
   cursor: pointer;
+}
+
+#left-btn-img, #right-btn-img {
+  height: 20px;
+  width: 20px;
+}
+
+.next, .prev {
+	height: 200px;
+  width: 300px;
+}
+
+.prev {
+	float: left;
 }

@@ -1,6 +1,6 @@
 // get left/right buttons
-var right = document.getElementById("right");
-var left = document.getElementById("left");
+var right = document.getElementById("right-btn");
+var left = document.getElementById("left-btn");
 // get number of images
 var num_of_img = document.getElementsByClassName("slideshow-image").length;
 
