@@ -1,51 +1,53 @@
-// get left/right buttons
+var images = ["http://photography.naturestocklibrary.com/orca-stock-photo.jpg", "http://www.publicdomainpictures.net/download-picture.php?adresar=30000&soubor=beauty-of-nature-3.jpg", "http://orig15.deviantart.net/740c/f/2007/129/7/4/stock_032__by_enchanted_stock.jpg", "http://indianapublicmedia.org/support/files/2011/09/04_03_1-Stock-Market-Prices_web.jpg", "http://netdna.webdesignerdepot.com/uploads/2008/12/stock-microstock.jpg" ];
+var img_arr = new Array();
+var showIndex = 1;
+var nextIndex = 2;
+
 var right = document.getElementById("right-btn");
 var left = document.getElementById("left-btn");
-// get number of images
-var num_of_img = document.getElementsByClassName("slideshow-image").length;
 
-// helper functions
-var showingImageElement = function() {
-	return document.getElementsByClassName("showing")[0];	
-}
+var carouselContainer = document.getElementById("carousel-container");
 
-var getShowingImageNumber = function(showingImageElement){
-	var str_num = showingImageElement.id.split("-")[1];
-	return parseInt(str_num);
+var renderArray = function (){
+	images.forEach(function (src){
+		var img = new Image();
+		img.src = src;
+		img.className = "slide";
+		img_arr.push(img);
+	});
 };
 
-var getImageElementByNumber = function(num){
-	var num_str = num.toString();
-	var idName = "img-" + num_str;
-	var image = document.getElementById(idName);
-	return image;
-}
-
-var nextImage = function(num, direction){
-	var current_img = showingImageElement();
-	var next; 
-	current_img.className = "hidden slideshow-image";
-
-	if(direction === "right"){
-		(num != num_of_img) ? next = getImageElementByNumber(num+1) : next = getImageElementByNumber(1);
+var updateShowIndex = function(direction) {
+	if (direction === "right") {
+		if(showIndex >= img_arr.length) {
+			showIndex = 1;
+			nextIndex++;
+		} else if (showIndex === img_arr.length-1){
+			showIndex++;
+			nextIndex = 1
+		} else {
+			showIndex++;
+			nextIndex++;
+		}
+	} else {
+		if(showIndex <= 1) {
+			showIndex = img_arr.length;
+			nextIndex--;
+		} else if (showIndex === 2 ){
+			showIndex--;
+			nextIndex = img_arr.length;
+		} else {
+			showIndex--;
+			nextIndex--;
+		}
 	}
-	else {
-		(num != 1) ? next = getImageElementByNumber(num-1) : next = getImageElementByNumber(num_of_img);
-	}
-	next.className = "showing slideshow-image";
-}
+	console.log(showIndex);
+	console.log(nextIndex);
+};
 
-// working carousel
-right.addEventListener("click", function(){
-	var direction = "right";
-	var image = showingImageElement();
-	var num = getShowingImageNumber(image);
-	nextImage(num, direction);
-});
+var renderOrder = function(index, arr) {
 
-left.addEventListener("click", function(){
-  var direction = "left";
-  var image = showingImageElement();
-  var num = getShowingImageNumber(image);
-  nextImage(num, direction);
-});
+};
+
+renderArray();
+
